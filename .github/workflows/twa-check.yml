@@ -25,7 +25,6 @@ jobs:
       - name: Install Bubblewrap
         run: npm install -g @bubblewrap/cli
 
-
       - name: Check MOSA Web Manifest
         run: |
           curl -fsSL \
@@ -33,9 +32,11 @@ jobs:
             -o /tmp/mosa-manifest.json
 
           node -e "
-          const fs = require('fs');
-          const m = JSON.parse(fs.readFileSync('/tmp/mosa-manifest.json', 'utf8'));
-          console.log(JSON.stringify(m, null, 2));
+            const fs = require('fs');
+            const m = JSON.parse(
+              fs.readFileSync('/tmp/mosa-manifest.json', 'utf8')
+            );
+            console.log(JSON.stringify(m, null, 2));
           "
 
       - name: Verify required MOSA manifest fields
