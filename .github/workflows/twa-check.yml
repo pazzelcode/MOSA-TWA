@@ -1,0 +1,76 @@
+name: MOSA TWA Check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Install Bubblewrap
+        run: npm install -g @bubblewrap/cli
+
+      - name: Bubblewrap version
+        run: bubblewrap --version
+
+      - name: Check MOSA Web Manifest
+        run: |
+          curl -fsSL \
+            https://pazzelcode.github.io/MOSA_Mobile-Sagaranten/manifest.json \
+            -o /tmp/mosa-manifest.json
+
+          node -e "
+          const fs = require('fs');
+          const m = JSON.parse(fs.readFileSync('/tmp/mosa-manifest.json', 'utf8'));
+          console.log(JSON.stringify(m, null, 2));
+          "
+
+      - name: Verify required MOSA manifest fields
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+
+          const m = JSON.parse(
+            fs.readFileSync('/tmp/mosa-manifest.json', 'utf8')
+          );
+
+          const required = [
+            'name',
+            'short_name',
+            'start_url',
+            'scope',
+            'display',
+            'theme_color',
+            'background_color',
+            'icons'
+          ];
+
+          const missing = required.filter(key => !(key in m));
+
+          if (missing.length) {
+            console.error('Missing fields:', missing);
+            process.exit(1);
+          }
+
+          console.log('MOSA Web Manifest OK');
+          console.log('name:', m.name);
+          console.log('short_name:', m.short_name);
+          console.log('start_url:', m.start_url);
+          console.log('scope:', m.scope);
+          console.log('display:', m.display);
+          NODE
