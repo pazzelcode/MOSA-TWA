@@ -1,0 +1,13 @@
+# Android signing
+signing/*.keystore
+signing/*.jks
+
+# Local / generated files
+.gradle/
+build/
+twa/
+*.apk
+*.aab
+
+# Bubblewrap / local config
+.bubblewrap/
