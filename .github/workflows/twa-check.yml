@@ -25,8 +25,6 @@ jobs:
       - name: Install Bubblewrap
         run: npm install -g @bubblewrap/cli
 
-      - name: Bubblewrap version
-        run: bubblewrap --version
 
       - name: Check MOSA Web Manifest
         run: |
