@@ -1,0 +1,41 @@
+{
+  "packageId": "com.pazzelcode.mosa",
+  "host": "pazzelcode.github.io",
+  "name": "MC-SAGARANTEN",
+  "launcherName": "MOSA",
+  "display": "standalone",
+  "themeColor": "#0f172a",
+  "themeColorDark": "#0f172a",
+  "navigationColor": "#0f172a",
+  "navigationColorDark": "#0f172a",
+  "navigationDividerColor": "#0f172a",
+  "navigationDividerColorDark": "#0f172a",
+  "backgroundColor": "#0f172a",
+  "enableNotifications": true,
+  "enableSiteSettingsShortcut": false,
+  "fallbackType": "customtabs",
+  "startUrl": "/MOSA_Mobile-Sagaranten/index.html",
+  "webManifestUrl": "https://pazzelcode.github.io/MOSA_Mobile-Sagaranten/manifest.json",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "signing/mosa-release.keystore",
+    "alias": "mosa"
+  },
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "fullScopeUrl": "https://pazzelcode.github.io/MOSA_Mobile-Sagaranten/",
+  "minSdkVersion": 23,
+  "orientation": "portrait",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "protocolHandlers": [],
+  "fileHandlers": [],
+  "launchHandlerClientMode": "",
+  "displayOverride": [
+    "standalone"
+  ],
+  "appVersion": "1.0.0"
+}

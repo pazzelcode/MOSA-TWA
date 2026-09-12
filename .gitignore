@@ -11,3 +11,4 @@ twa/
 
 # Bubblewrap / local config
 .bubblewrap/
+mosa-keystore.b64
